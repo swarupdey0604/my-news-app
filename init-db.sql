@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS users (username VARCHAR PRIMARY KEY, password VARCHAR);
+       CREATE TABLE IF NOT EXISTS user_prefs (username VARCHAR PRIMARY KEY, topics TEXT[]);

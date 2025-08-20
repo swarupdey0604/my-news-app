@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: newsdb
+    volumes:
+      - /data/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgres://user:pass@db:5432/newsdb
+      JWT_SECRET: your_super_secret_key_12345
+    ports:
+      - "80:3000"
+    depends_on:
+      - db
+volumes:
+  db-data:
